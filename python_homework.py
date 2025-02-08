@@ -20,7 +20,8 @@ def items_by_category(purchases): #Список товаров по катего
     category_items = group_by_category(purchases)
     for purchase in purchases:
         category = purchase["category"]
-        category_items[category].append(purchase["item"])
+        if purchase["item"] not in category_items[category]:
+            category_items[category].append(purchase["item"])
     return category_items
 
 def expensive_purchases(purchases, min_price): #Список покупок, где цена превышает заданное значение.
